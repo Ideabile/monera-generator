@@ -1,0 +1,33 @@
+{
+  "name": "monera-generator",
+  "version": "0.1.0",
+  "description": "Static website generator for monera kingdom",
+  "author": {
+    "name": "Mauro Mandracchia <info@ideabile.com>",
+    "url": "https://github.com/ideabile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ideabile/monera-generator"
+  },
+  "dependencies": {
+    "browser-sync": "^2.9.1",
+    "clean": "^4.0.1",
+    "gulp": "^3.9.0",
+    "gulp-if": "^1.2.5",
+    "gulp-subtask": "^0.3.4",
+    "handlebars": "^2.0.0-alpha.2",
+    "metalsmith": "^1.0.0",
+    "metalsmith-assets": "^0.1.0",
+    "metalsmith-collections": "^0.6.0",
+    "metalsmith-drafts": "0.0.1",
+    "metalsmith-ignore": "^0.1.2",
+    "metalsmith-layouts": "^1.4.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "require-dir": "^0.3.0"
+  },
+  "devDependencies": {
+    "gulp-clean": "^0.3.1"
+  }
+}
