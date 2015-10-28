@@ -5,13 +5,13 @@ var gulp = require('gulp'),
 
 
 //_origin, _destination, _watch
-require('/style/Gulpfile')(
-  styleDir+'index.scss',
-  destDir,
-  [styleDir+'**/*.scss', '/style/src/**/*.scss'],
-  gulp,
-  gulp.browserSync
-);
+require('/style/Gulpfile')({
+    origin: styleDir+'index.scss',
+    destination: destDir,
+    watch: [styleDir+'**/*.scss', '/style/src/**/*.scss'],
+    gulp: gulp,
+    browserSync: gulp.browserSync
+  });
 
 // Style task
 gulp.task('style', ['sass'], function (cb) {
