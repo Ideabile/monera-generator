@@ -1,14 +1,10 @@
 var gulp = require('gulp'),
-    fs = require('fs'),
-    styleDir = __dirname+'/../../_layouts/style/',
-    destDir = process.env.WWW+'css/';
+    fs = require('fs');
 
-
-//_origin, _destination, _watch
 require('/style/Gulpfile')({
-    origin: styleDir+'index.scss',
-    destination: destDir,
-    watch: [styleDir+'**/*.scss', '/style/src/**/*.scss'],
+    origin: '/content/layouts/style/index.scss',
+    destination: process.env.WWW+'css/',
+    watch: ['/content/layouts/style/**/*.scss', '/style/src/**/*.scss'],
     gulp: gulp,
     browserSync: gulp.browserSync
   });

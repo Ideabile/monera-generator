@@ -10,8 +10,10 @@ var Metalsmith = require('metalsmith'),
     fs = require('fs'),
     path = require('path'),
     partials = require('./../plugins/partials.js'),
-    metadata = require('/content/metadata.json');
+    metadata = require('/content/metadata.json'),
+    url = process.env.URL || '/';
 
+    metadata.url = metadata.url || url;
 // Build
 gulp.task('build-static', function (cb) {
   console.time('[metalsmith] build finished');
@@ -19,7 +21,7 @@ gulp.task('build-static', function (cb) {
 
       metalsmith
       .metadata(metadata)
-      .source('/content/_posts')
+      .source('/content/posts')
       // .use(assets({
       //   source: './assets', // relative to the working directory
       //   destination: './assets' // relative to the build directory
@@ -32,16 +34,18 @@ gulp.task('build-static', function (cb) {
           }
       }))
       .use(markdown({}))
+      .use(require('./../plugins/setFilePath.js'))
       .use(drafts({}))
       .use(ignore([
           '/content/_drafts/*',
-          '/content/_posts/index.md'
+          '/content/posts/index.md'
       ]))
-      .use(permalinks({'pattern': ':title'}))
+      .use(permalinks({'pattern': ':title', 'relative': false}))
       .use(layouts({
         engine: 'handlebars',
-        partials: partials(metalsmith, '_layouts', 'partials'),
-        directory: '_layouts'
+        partials: partials(metalsmith, '/content/layouts', 'partials'),
+        relative_path: require('./../plugins/getPath.js'),
+        directory: '/content/layouts'
       }))
       .clean(false)
       .destination(process.env.WWW);
@@ -54,5 +58,5 @@ gulp.task('build-static', function (cb) {
 });
 
 gulp.task('watch:static', function(){
-    gulp.watch(['/content/_posts/**/*.md', './_layouts/**/*.html'], ['build']);
+    gulp.watch(['/content/posts/**/*.md', './layouts/**/*.html'], ['build']);
 });
