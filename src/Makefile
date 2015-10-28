@@ -1,7 +1,6 @@
 build: package.json
-	cd /style && npm install &2>/dev/null && \
-	cd /src && npm install &2>/dev/null && \
-	npm install && \
+	cd /style && npm install && \
+	cd /src && npm install && \
 	node_modules/.bin/gulp "${TASK}"
 
 .PHONY: build
