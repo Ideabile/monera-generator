@@ -13,7 +13,8 @@ var Metalsmith = require('metalsmith'),
     metadata = require('/content/metadata.json'),
     url = process.env.URL || '/';
 
-    metadata.url = metadata.url || url;
+metadata.url = metadata.url || url;
+
 // Build
 gulp.task('build-static', function (cb) {
   console.time('[metalsmith] build finished');
@@ -22,10 +23,10 @@ gulp.task('build-static', function (cb) {
       metalsmith
       .metadata(metadata)
       .source('/content/posts')
-      // .use(assets({
-      //   source: './assets', // relative to the working directory
-      //   destination: './assets' // relative to the build directory
-      // }))
+      .use(assets({
+        source: '/content/assets', // relative to the working directory
+        destination: 'assets' // relative to the build directory
+      }))
       .use(collections({
          articles: {
             pattern: '*.md',
@@ -58,5 +59,5 @@ gulp.task('build-static', function (cb) {
 });
 
 gulp.task('watch:static', function(){
-    gulp.watch(['/content/posts/**/*.md', './layouts/**/*.html'], ['build']);
+    gulp.watch(['/content/posts/**/*.md', '/content/layouts/**/*.html'], ['build']);
 });

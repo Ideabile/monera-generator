@@ -14,6 +14,7 @@
     "browser-sync": "^2.9.1",
     "clean": "^4.0.1",
     "gulp": "^3.9.0",
+    "gulp-copy": "0.0.2",
     "gulp-if": "^1.2.5",
     "gulp-subtask": "^0.3.4",
     "handlebars": "^2.0.0-alpha.2",

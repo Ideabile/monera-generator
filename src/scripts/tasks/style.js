@@ -1,9 +1,12 @@
 var gulp = require('gulp'),
-    fs = require('fs');
+    fs = require('fs'),
+    source = '/content/layouts/style/index.scss',
+    destination = '/content/assets/css/',
+    destinationPublic = process.env.WWW;
 
 require('/style/Gulpfile')({
-    origin: '/content/layouts/style/index.scss',
-    destination: process.env.WWW+'css/',
+    origin: source,
+    destination: destination,
     watch: ['/content/layouts/style/**/*.scss', '/style/src/**/*.scss'],
     gulp: gulp,
     browserSync: gulp.browserSync
