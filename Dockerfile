@@ -1,4 +1,4 @@
 FROM node
-VOLUME ["/usr/share/nginx/html", "/style", "/src"]
+VOLUME [ "/src", "/style", "/content", "/destination" ]
 WORKDIR /src
 CMD ["make"]
