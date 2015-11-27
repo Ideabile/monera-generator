@@ -1,20 +1,22 @@
 var gulp = require('gulp'),
+    chug = require('gulp-chug'),
     fs = require('fs'),
     source = '/content/layouts/style/index.scss',
     destination = '/content/assets/css/',
     destinationPublic = process.env.WWW;
 
-require('/style/Gulpfile')({
-    origin: source,
-    destination: destination,
-    watch: ['/content/layouts/style/**/*.scss', '/style/src/**/*.scss'],
-    gulp: gulp,
-    browserSync: gulp.browserSync
-  });
 
 // Style task
-gulp.task('style', ['sass'], function (cb) {
+gulp.task('style', function (cb) {
   console.log('Style compiled.');
+
+  gulp.src( '/style/Gulpfile.js', {
+
+        task: ['default'],
+        args: ['--origin='+source, '--destination='+destination ]
+
+      }).pipe( chug() );
+
   cb();
 });
 

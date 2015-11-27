@@ -1,6 +1,6 @@
 {
-  "name": "monera-generator",
-  "version": "0.1.0",
+  "name": "monera-transformer",
+  "version": "1.0.0",
   "description": "Static website generator for monera kingdom",
   "author": {
     "name": "Mauro Mandracchia <info@ideabile.com>",
@@ -14,6 +14,7 @@
     "browser-sync": "^2.9.1",
     "clean": "^4.0.1",
     "gulp": "^3.9.0",
+    "gulp-chug": "^0.4.2",
     "gulp-copy": "0.0.2",
     "gulp-if": "^1.2.5",
     "gulp-subtask": "^0.3.4",
