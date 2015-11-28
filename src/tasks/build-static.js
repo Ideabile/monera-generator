@@ -9,8 +9,9 @@ var Metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
     fs = require('fs'),
     path = require('path'),
+    main_dir = process.cwd(),
     partials = require('./../plugins/partials.js'),
-    metadata = require('/content/metadata.json'),
+    metadata = require(main_dir+'content/metadata.json'),
     url = process.env.URL || '/';
 
 metadata.url = metadata.url || url;
@@ -19,12 +20,11 @@ metadata.url = metadata.url || url;
 gulp.task('build-static', function (cb) {
   console.time('[metalsmith] build finished');
   var metalsmith = Metalsmith(__dirname+'/../../');
-
       metalsmith
       .metadata(metadata)
-      .source('/content/posts')
+      .source(main_dir+'/content/posts')
       .use(assets({
-        source: '/content/assets', // relative to the working directory
+        source: main_dir+'/content/assets', // relative to the working directory
         destination: 'assets' // relative to the build directory
       }))
       .use(collections({
@@ -38,15 +38,15 @@ gulp.task('build-static', function (cb) {
       .use(require('./../plugins/setFilePath.js'))
       .use(drafts({}))
       .use(ignore([
-          '/content/_drafts/*',
-          '/content/posts/index.md'
+          main_dir+'/content/_drafts/*',
+          main_dir+'/content/posts/index.md'
       ]))
       .use(permalinks({'pattern': ':title', 'relative': false}))
       .use(layouts({
         engine: 'handlebars',
-        partials: partials(metalsmith, '/content/layouts', 'partials'),
+        partials: partials(metalsmith, main_dir+'/content/layouts', 'partials'),
         relative_path: require('./../plugins/getPath.js'),
-        directory: '/content/layouts'
+        directory: main_dir+'/content/layouts'
       }))
       .clean(false)
       .destination(process.env.WWW);
@@ -56,8 +56,4 @@ gulp.task('build-static', function (cb) {
           console.timeEnd('[metalsmith] build finished');
           cb();
       });
-});
-
-gulp.task('watch:static', function(){
-    gulp.watch(['/content/posts/**/*.md', '/content/layouts/**/*.html'], ['build']);
 });

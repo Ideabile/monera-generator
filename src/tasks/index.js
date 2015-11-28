@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    runSequence = require('run-sequence');
 
 // Utils
 gulp.task('clean', function () {
@@ -9,8 +10,8 @@ gulp.task('clean', function () {
 
 // Build
 gulp.task('build', ['clean', 'style', 'build-static'], function (cb) {
+  runSequence('clean', 'style', 'build-static', cb);
   console.log('Build done.');
-  cb();
 });
 
 gulp.task('default', ['build']);
