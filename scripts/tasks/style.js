@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 gulp.task('style', function (cb) {
   console.log('Style compiled.');
 
-  gulp.src( '/style/Gulpfile.js', {
+  gulp.src( 'node_modules/monera-style/Gulpfile.js', {
 
         task: ['default'],
         args: ['--origin='+source, '--destination='+destination ]

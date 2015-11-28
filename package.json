@@ -1,6 +1,6 @@
 {
   "name": "monera-transformer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Static website generator for monera kingdom",
   "author": {
     "name": "Mauro Mandracchia <info@ideabile.com>",
@@ -27,6 +27,7 @@
     "metalsmith-layouts": "^1.4.0",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.4.0",
+    "monera-style": "^1.0.0",
     "require-dir": "^0.3.0"
   },
   "devDependencies": {
